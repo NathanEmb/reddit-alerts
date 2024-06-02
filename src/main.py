@@ -94,7 +94,8 @@ def main():
                     usable_vals.append(float(currency[0][1:].replace(",","")))
                 price_val = max(usable_vals)
                 if price_val < DESIRED_PRICE:
-                    message = submission.title + "\n\n" + submission.url
+                    reddit_link = "https://reddit.com" + submission.permalink
+                    message = submission.title + "\n\n" + reddit_link
                     logger.debug(f"\nPost ID:{submission.id}\n\n Post Title: {submission.title}\n\n")
                     logger.info(f"Sending alert for {submission.id}")
                     send_alert(None, message, TO_EMAIL, FROM_EMAIL, APP_PWD)
