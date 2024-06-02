@@ -7,3 +7,25 @@ This bot searches [/r/laptopdeals](https://www.reddit.com/r/laptopdeals) for lap
 - `secrets/reddit_app_token.txt` - Reddit App token [link](https://www.reddit.com/prefs/apps)
 - `secrets/reddit_app_id.txt` - Reddit App ID [link](https://www.reddit.com/prefs/apps)
 - `secrets/app_password.txt` - Google App password, not super secure don't attach to main account.
+
+## Raspberry Pi Config
+systemd tutorial created using [ref](https://www.thedigitalpictureframe.com/ultimate-guide-systemd-autostart-scripts-raspberry-pi/)
+
+
+The following systemd config should start a service on boot, and keep it running indefinitely.
+```
+[Unit]
+Description=Startup service for python program.
+Requires=network.target
+
+[Service] 
+Type=idle
+WorkingDirectory={path/to/workdir}
+ExecStart= {path/to/python/executable} {path/to/workdir/main.py}
+user={username}
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
