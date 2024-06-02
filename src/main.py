@@ -82,7 +82,7 @@ def main():
     reddit = praw.Reddit(
         client_id=APP_ID,
         client_secret=APP_TOKEN,
-        user_agent="linux:4060Scraper:v0 (by /u/Chasian)",
+        user_agent="linux:4060Scraper:v0",
     )
     laptop_deals = reddit.subreddit("LaptopDeals")
     for submission in laptop_deals.stream.submissions():
