@@ -85,7 +85,8 @@ def main():
         user_agent="linux:4060Scraper:v0",
     )
     laptop_deals = reddit.subreddit("LaptopDeals")
-    for submission in laptop_deals.stream.submissions():
+    logger.info("Reddit alert service started.")
+    for submission in laptop_deals.stream.submissions(skip_existing=True):
         if "4060" in submission.title:
             currency_found = re.findall(CURRENCY_REGEX, submission.title)
             if currency_found:
