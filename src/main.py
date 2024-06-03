@@ -87,7 +87,7 @@ def main():
     laptop_deals = reddit.subreddit("LaptopDeals")
     logger.info("Reddit alert service started.")
     for submission in laptop_deals.stream.submissions(skip_existing=True):
-        if "4060" in submission.title or 3070 in submission.title:
+        if "4060" in submission.title or "3070" in submission.title:
             currency_found = re.findall(CURRENCY_REGEX, submission.title)
             if currency_found:
                 usable_vals = []
